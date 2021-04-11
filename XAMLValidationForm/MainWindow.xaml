@@ -1,0 +1,86 @@
+﻿<Window x:Class="XAMLValidace.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XAMLValidace"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="Name" Grid.Row="1" Grid.Column="1"
+                 Margin="20"
+                 Text="{Binding Jmeno, UpdateSourceTrigger=PropertyChanged}"
+                 FontSize="25"
+                 TextChanged="Name_TextChanged"/>
+        <Label x:Name="ErrorLabelJmeno" Grid.Row="2" Grid.Column="1" Foreground="Red"
+               Content="{Binding JmenoError}" Visibility="{Binding JmenoErrorVisible}"/>
+        
+        <TextBox x:Name="Surname" Grid.Row="1" Grid.Column="2"
+                 Margin="20"
+                 Text="{Binding Prijmeni, UpdateSourceTrigger=PropertyChanged}"
+                 FontSize="25"
+                 TextChanged="Surname_TextChanged"/>
+        <Label x:Name="ErrorLabelPrijmeni" Grid.Row="2" Grid.Column="2" Foreground="Red"
+               Content="{Binding PrijmeniError}" Visibility="{Binding PrijmeniErrorVisible}"/>
+        
+        <TextBox x:Name="Age" Grid.Row="3" Grid.Column="1"
+                 Margin="20"
+                 Text="{Binding Rok, UpdateSourceTrigger=PropertyChanged}"
+                 FontSize="25"
+                 TextChanged="Age_TextChanged"/>
+        <Label x:Name="ErrorLabelRok" Grid.Row="4" Grid.Column="1" Foreground="Red"
+               Content="Musí být číslo" Visibility="{Binding VekErrorVisible}"/>
+
+        <ComboBox x:Name="Education" Grid.Row="3" Grid.Column="2" FontSize="25" Margin="20">
+            <ComboBoxItem Content="Nic"/>
+            <ComboBoxItem Content="Základní vzdělání"/>
+            <ComboBoxItem Content="Výuční list"/>
+            <ComboBoxItem Content="Střední škola s maturitou"/>
+            <ComboBoxItem Content="Vysoká škola"/>
+        </ComboBox>
+        <Label x:Name="VzdelaniLabelName" Grid.Row="4" Grid.Column="2" Foreground="Red"
+               Content="{Binding VzdelaniError}" Visibility="{Binding VzdelaniErrorVisible}"/>
+
+        <TextBox x:Name="Position" Grid.Row="5" Grid.Column="1"
+                 Margin="20"
+                 Text="{Binding Pozice, UpdateSourceTrigger=PropertyChanged}"
+                 FontSize="25"
+                 TextChanged="Position_TextChanged"/>
+        <Label x:Name="ErrorLabelPozice" Grid.Row="6" Grid.Column="1" Foreground="Red"
+               Content="Povinné" Visibility="{Binding PoziceErrorVisible}"/>
+        
+        <TextBox x:Name="Pay" Grid.Row="5" Grid.Column="2"
+                 Margin="20"
+                 Text="{Binding Plat, UpdateSourceTrigger=PropertyChanged}"
+                 FontSize="25"
+                 TextChanged="Pay_TextChanged"/>
+        <Label x:Name="ErrorLabelPlat" Grid.Row="6" Grid.Column="2" Foreground="Red"
+               Content="Musí být číslo" Visibility="{Binding PlatErrorVisible}"/>
+
+        <TextBox x:Name="Info" Grid.Row="7" Grid.Column="1"
+                 Margin="20,0,20,0"
+                 Text="{Binding Info, UpdateSourceTrigger=PropertyChanged}"
+                 FontSize="9"/>
+
+        <Button Content="OK" Grid.Row="7" Grid.Column="2"
+                Margin="20" Click="Button_Click" />
+    </Grid>
+</Window>
